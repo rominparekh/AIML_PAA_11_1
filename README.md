@@ -15,46 +15,46 @@ A used car dealership needs to understand what factors influence used car prices
 - **Features**: Price, year, manufacturer, model, condition, odometer, fuel type, transmission, etc.
 - **Target Variable**: Price
 
+![Data Exploration](images/data_exploration.png)
+
 ## Key Findings
 
-### Model Performance
-- **Best Model**: Random Forest Regressor
-- **R² Score**: 0.85 (explains 85% of price variation)
-- **RMSE**: $3,200 (average prediction error)
-- **Cross-validation**: Confirms model reliability
-
 ### Most Important Price Drivers
-1. **Year/Model Year** - Newer cars command significantly higher prices
-2. **Odometer Reading** - Lower mileage vehicles have premium pricing
-3. **Manufacturer** - Brand reputation significantly impacts pricing
-4. **Vehicle Condition** - Excellent condition cars command 40%+ premium
-5. **Fuel Type** - Electric and hybrid vehicles have higher prices
+| **Feature** | **Importance (%)** | **Business Insight** | 
+| Odometer | 40% | Lower-mileage vehicles command significant premiums. |
+| Age | 25% | Newer models (<5 years) retain more value. |
+| Price-per-mile | 15% | Combines usage and price for quick benchmark comparisons. |
+| Condition | 10% | “Excellent” vs. “Fair” adds substantial markup. |
+| Manufacturer | 5% | Top makes (Toyota, Honda) outperform in resale. |
+| Other | 5% | Includes fuel type, drive type, luxury flag, etc. |
 
-### Price Patterns
-- Car age has -0.65 correlation with price (older = cheaper)
-- Odometer has -0.45 correlation with price (higher mileage = cheaper)
-- Luxury brands command 60%+ price premium
-- SUVs and trucks have 15% price premium over sedans
+Percentages derived from `feature_importances_` of the Random Forest model.
+
+## Charts
+
+![Categorical Analysis](images/categorical_analysis.png)
+![Correlation Matrix](images/correlation_matrix.png)
 
 ## Recommendations for Used Car Dealership
 
-### Inventory Strategy
-1. **Focus on Good Condition Vehicles** - Best balance of price and demand
-2. **Prioritize Low-Mileage Cars** - Significant price premium for well-maintained vehicles
-3. **Target Luxury Brands** - Higher profit margins despite higher acquisition costs
-4. **Consider Electric/Hybrid** - Growing market with premium pricing
+1. Acquisition Strategy
+    - Prioritize vehicles ≤5 years old with <60,000 miles.
+    - Source popular makes (Toyota, Honda) with proven resale performance.
 
-### Pricing Strategy
-1. **Use Data-Driven Pricing** - Implement predictive model for accurate pricing
-2. **Factor in Vehicle History** - Clean titles and maintenance records add significant value
-3. **Consider Market Timing** - Prices vary by season and market conditions
-4. **Premium for Condition** - Excellent condition cars can command 40%+ premium
+    ![Price distribution by Manufacturer](images/avg_price_by_manufacturer.png)
 
-### Marketing Strategy
-1. **Highlight Condition** - Emphasize vehicle condition in marketing materials
-2. **Feature Low Mileage** - Promote low-mileage vehicles as premium options
-3. **Leverage Brand Value** - Use manufacturer reputation in marketing
-4. **Target Demographics** - Focus on customers valuing reliability and condition
+2. Pricing & Positioning
+    - Use Price-per-mile to benchmark trade-in offers.
+    - Apply higher markups for top-condition, low-mileage and "newer" stock.
+
+    ![Price distribution by Mileage](images/avg_price_by_age_.png)
+    
+
+3. Reconditioning & Marketing
+    - Invest in cosmetic and mechanical reconditioning to upgrade condition tiers.
+    - Highlight low mileage, recent model year, and clean title in listings.
+
+    ![Price distribution by Mileage](images/avg_price_by_mileage.png)
 
 ## Analysis Notebook
 
@@ -75,6 +75,7 @@ The Jupyter notebook contains:
 - Ridge Regression (L2 regularization)
 - Lasso Regression (L1 regularization)
 - Random Forest Regressor
+- Gradient Boost
 
 ### Evaluation Metrics
 - **R² Score**: Measures explained variance
@@ -89,13 +90,19 @@ The Jupyter notebook contains:
 - Created SUV indicator
 - Encoded categorical variables
 
+### Model Performance
+- **Best Model**: Random Forest Regressor
+- **R² Score**: 0.85 (explains 85% of price variation)
+- **RMSE**: $3,200 (average prediction error)
+- **Cross-validation**: Confirms model reliability
+
 ## Next Steps
 
-1. **Implement Real-Time Pricing Model** - Deploy the predictive model for live pricing
+1. **Implement Real-Time Pricing Model** - Deploy the predictive model into a live pricing dashboard or tool.
 2. **Monitor Market Trends** - Track price changes and adjust inventory accordingly
-3. **Expand Regional Analysis** - Include geographic factors in pricing
-4. **Customer Segmentation** - Develop targeted marketing based on preferences
-5. **Competitive Analysis** - Monitor competitor pricing strategies
+3. **Customer Segmentation** - Develop targeted marketing based on preferences
+4. **Competitive Analysis** - Monitor competitor pricing strategies
+5. **Iteration** - Retrain the model quarterly with new sales data and expand feature set (e.g., regional trends, optional packages).
 
 ## Success Metrics
 
