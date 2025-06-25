@@ -47,7 +47,7 @@ Percentages derived from `feature_importances_` of the Random Forest model.
     - Use Price-per-mile to benchmark trade-in offers.
     - Apply higher markups for top-condition, low-mileage and "newer" stock.
 
-    ![Price distribution by Mileage](images/avg_price_by_age_.png)
+    ![Price distribution by Age](images/avg_price_by_age.png)
     
 
 3. Reconditioning & Marketing
